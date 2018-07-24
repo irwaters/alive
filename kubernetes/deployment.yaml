@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: truth-service
+  labels:
+    app: truth-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: truth-service
+  template:
+    metadata:
+      labels:
+        app: truth-service
+    spec:
+      containers:
+      - name: truth-service
+        image: localhost:5000/truth-service:latest
+        ports:
+        - containerPort: 8080
