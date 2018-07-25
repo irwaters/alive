@@ -19,3 +19,19 @@ spec:
         image: localhost:5000/truth-service:latest
         ports:
         - containerPort: 8080
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: truth-service
+spec: 
+  selector:
+    app: truth-service
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
