@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alive-service
+  labels:
+    app: alive-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alive-service
+  template:
+    metadata:
+      labels:
+        app: alive-service
+    spec:
+      containers:
+      - name: alive-service
+        image: gcr.io/lookerops-sandbox/alive-image
+        ports:
+        - containerPort: 8080
+

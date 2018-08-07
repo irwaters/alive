@@ -33,5 +33,5 @@ func jsonHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func lookerHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hey there good looker")
+	fmt.Fprintf(w, "hey there good looker\n")
 }
