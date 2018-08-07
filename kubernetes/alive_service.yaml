@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alive-service
+  labels:
+    app: alive-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alive-service
+  template:
+    metadata:
+      labels:
+        app: alive-service
+    spec:
+      containers:
+      - name: alive-service
+        image: localhost:5000/alive-service:latest
+        ports:
+        - containerPort: 8080
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: alive-service
+spec: 
+  selector:
+    app: alive-service
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080

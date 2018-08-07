@@ -1,10 +1,13 @@
 all : clean build
 
 clean :
-	rm -f ./truth_service
+	rm -f ./bin/alive
 
 build :
-	go build -o truth_service cmd/truth_service/main.go
+	go build -o bin/alive cmd/alive/main.go
 
 run : all
-	./truth_service
+	./bin/alive
+
+debug :
+	dlv debug cmd/alive/main.go
